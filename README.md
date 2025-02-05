@@ -39,7 +39,7 @@ picked_up, used, mined, broken, crafted 的 <统计内容> 为物品/方块id
 
 custom 的 <统计内容> 详见统计信息的json文件，或 [MC Wiki](https://minecraft.fandom.com/zh/wiki/%E7%BB%9F%E8%AE%A1%E4%BF%A1%E6%81%AF)
 
-上述内容无需带minecraft前缀
+上述内容可省略 `minecraft:` 前缀
 
 [<-uuid>]: 用uuid替换玩家名; (-bot): 统计bot与cam; [<-tell>]: 仅自己可见
 

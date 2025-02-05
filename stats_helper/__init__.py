@@ -199,7 +199,9 @@ def build_scoreboard(source: CommandSource, cls: str, target: str, title: Option
 		title = get_display_text(cls, target)
 	else:
 		title = RTextBase.from_any(title)
-	server.execute('scoreboard objectives add {} minecraft.{}:minecraft.{} {}'.format(constants.ScoreboardName, cls, target, title.to_json_str()))
+	cls_name = "minecraft." + cls if ":" not in cls else cls.replace(":", ".")
+	target_name = "minecraft." + target if ":" not in target else target.replace(":", ".")
+	server.execute('scoreboard objectives add {} {}:{} {}'.format(constants.ScoreboardName, cls_name, target_name, title.to_json_str()))
 	for name, uuid in player_list:
 		value = utils.get_stat_data(uuid, cls, target)
 		if value is not None:

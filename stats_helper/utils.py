@@ -26,10 +26,12 @@ def isBot(name: str):
 def get_stat_data(uuid: str, cls: str, target: str) -> Optional[int]:
 	try:
 		with open(os.path.join(Config.get_instance().get_world_path(), 'stats', uuid + '.json'), 'r') as f:
-			target_data: Dict[str, int] = json.load(f)['stats']['minecraft:' + cls]
+			cls_name = "minecraft:" + cls if ":" not in cls else cls
+			target_data: Dict[str, int] = json.load(f)['stats'][cls_name]
 			if target == constants.AllTargetTag:
 				return sum(target_data.values())
-			return target_data['minecraft:' + target]
+			target_name = "minecraft:" + target if ":" not in target else target
+			return target_data[target_name]
 	except:
 		return None
 
